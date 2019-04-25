@@ -1,0 +1,52 @@
+﻿@model IEnumerable<BankProject.Models.Transaction>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Transactions for Account: @ViewBag.accountnumber</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Balance)
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateStringFormat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AmountStringFormat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Balance)
+        </td>
+
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.Id })
+        </td>
+
+    </tr>
+}
+
+</table>
